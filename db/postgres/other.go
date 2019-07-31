@@ -1,11 +1,8 @@
 package postgres
 
-import (
-	"fmt"
-)
+import "fmt"
 
-type InstrumentedClientOther struct {
-}
+type InstrumentedClientOther struct{}
 
 func NewInstrumentedClientOther() *InstrumentedClientOther {
 	return &InstrumentedClientOther{}

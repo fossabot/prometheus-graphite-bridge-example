@@ -4,11 +4,10 @@ import (
 	"testing"
 
 	"github.com/golang/mock/gomock"
-	"github.com/pkg/errors"
-	"github.com/stretchr/testify/assert"
-
 	"github.com/martinsirbe/go-metrics-poc/examples/mocks"
 	"github.com/martinsirbe/go-metrics-poc/examples/service"
+	"github.com/pkg/errors"
+	"github.com/stretchr/testify/assert"
 )
 
 type testSuite struct {

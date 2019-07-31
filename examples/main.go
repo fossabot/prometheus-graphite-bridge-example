@@ -3,11 +3,10 @@ package main
 import (
 	"net/http"
 
-	"github.com/prometheus/client_golang/prometheus/promhttp"
-	"github.com/sirupsen/logrus"
-
 	"github.com/martinsirbe/go-metrics-poc/db/postgres"
 	"github.com/martinsirbe/go-metrics-poc/examples/service"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
+	"github.com/sirupsen/logrus"
 )
 
 func main() {
