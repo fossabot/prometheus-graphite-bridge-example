@@ -1,12 +1,16 @@
 package main
 
 import (
+	"context"
 	"net/http"
+	"time"
 
 	"github.com/martinsirbe/go-metrics-poc/db/postgres"
 	"github.com/martinsirbe/go-metrics-poc/examples/service"
+	"github.com/prometheus/client_golang/prometheus/graphite"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/sirupsen/logrus"
+	log "github.com/sirupsen/logrus"
 )
 
 func main() {
@@ -19,11 +23,25 @@ func main() {
 	ll := service.NewLogicLayer(storageClient)
 	go func() {
 		if err := ll.Run(); err != nil {
-			logrus.WithError(err).Fatal("failed to run")
+			log.WithError(err).Fatal("failed to run")
 		}
 	}()
 
+	bridge, err := graphite.NewBridge(&graphite.Config{
+		URL:           "localhost:2003",
+		Prefix:        "poc",
+		Timeout:       5 * time.Second,
+		ErrorHandling: graphite.AbortOnError,
+		Logger:        log.StandardLogger(),
+	})
+
+	if err != nil {
+		logrus.WithError(err).Fatal("failed to create Prometheus Graphite bridge")
+	}
+
+	go bridge.Run(context.Background())
+
 	if err := http.ListenAndServe(":1337", nil); err != nil {
-		logrus.WithError(err).Fatal("failed to listen and serve metrics")
+		log.WithError(err).Fatal("failed to listen and serve metrics")
 	}
 }
