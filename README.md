@@ -1,4 +1,6 @@
 # go-metrics-poc
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmartinsirbe%2Fprometheus-graphite-bridge-example.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmartinsirbe%2Fprometheus-graphite-bridge-example?ref=badge_shield)
+
 
 This shows a simple usage of how to instrument your components using 
 Prometheus using [go-metrics][1] (this library supports [other][2] metrics clients).  
@@ -29,3 +31,6 @@ you will need to install [go-mock][3] and run `make generate` to regenerate the 
 [1]: https://github.com/rcrowley/go-metrics
 [2]: https://github.com/rcrowley/go-metrics#publishing-metrics
 [3]: https://github.com/golang/mock#installation
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmartinsirbe%2Fprometheus-graphite-bridge-example.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmartinsirbe%2Fprometheus-graphite-bridge-example?ref=badge_large)
